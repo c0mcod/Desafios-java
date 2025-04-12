@@ -1,0 +1,65 @@
+package CalculadoraAvançada;
+
+public class Calculadora {
+	double soma(double a, double b) {
+		return a + b;
+	}
+
+	double sub(double a, double b) {
+		return a - b;
+	}
+
+	double mult(double a, double b) {
+		return a * b;
+	}
+
+	double div(double numerador, double denominador) {
+		if (denominador <= 0) {
+			System.out.println("ERROR! Denominador não pode ser menor ou igual a 0.");
+		}
+		return numerador / denominador;
+
+	}
+
+	int fat(int x) {
+		int f = x;
+		if (x <= 0) {
+			System.out.println("ERROR! Valor não pode ser menor ou igual a 0.");
+		}
+		while (x > 1) {
+			f = f * (x - 1);
+		}
+		return f;
+	}
+
+	double exp(double base, double expoente) {
+		double result = 1;
+
+		for (int i = 1; i < expoente; i++) {
+			result = result * base;
+		}
+		return result;
+	}
+
+	double raizQuadrada(double x) {
+		if (x < 0) {
+			System.out.println("Error! Numero não pode ser menor ou igual a zero!");
+			return -1;
+		}
+
+		double chute = x / 2;
+		double precisao = 0.00001;
+
+		while ((chute * chute - x) > precisao || (x - chute * chute) > precisao) {
+			chute = (chute + x / chute) / 2;
+		}
+
+		return chute;
+	}
+	
+	int fibonacchi(int x) {
+		
+		return x;
+	}
+
+}
