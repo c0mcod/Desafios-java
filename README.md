@@ -1,1 +1,2 @@
- . 
+## Calculadora Avançada em Java
+>Desenvolver uma aplicação Jaa que simule uma calculadora com funcionalidades matemáticas avançadas. Os alunos devem implementar uma classe Calculadora com as funções descritas abaixo e criar um menu de interação com o usuário via console. Na função principal deverá ser criada uma instância dessa classe. Uma pergunta será direcionada ao usuário para que ele indique qual das funções deseja executar. A depender da resposta do usuário, deverão ser lidos os parâmetros relativos a função solicitada e impresso em tela o valor retornado pela função.
