@@ -28,7 +28,7 @@ int fat(int x) {
 
 		int f = 1; // f começa como 1
 		for (int i = 1; i <= x; i++) { //variavel de iteração "i" começa com 1, enquanto i for menor que o numero inserido pelo usuario, i é incrementado a cada iteração do laço FOR
-			f *= i; 
+			f *= i;
             /*
             * Exemplo: x = 5;
             *   f = f * i
@@ -46,3 +46,19 @@ int fat(int x) {
 
 ### Exponencial
 
+```java
+double exp(double base, double expoente) {
+		double result = 1; //i começa como 1
+
+		for (int i = 1; i < expoente; i++) { // variavel de iteração começa com 1, enquanto i for menor que o expoente, i irá acrescentar 1
+			result = base * base;
+            /*exemplo: base = 8 e expoente 2
+            *enquanto i for menor que 2, irá acrescentar em i
+            *1 = 8 * 8 = 64
+            *1 = 64
+            */
+             return result;
+		}
+		return result;
+	}
+```
