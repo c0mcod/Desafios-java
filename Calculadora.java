@@ -22,12 +22,14 @@ public class Calculadora {
 	}
 
 	int fat(int x) {
-		int f = x;
-		if (x <= 0) {
-			System.out.println("ERROR! Valor não pode ser menor ou igual a 0.");
+		if (x < 0) {
+			System.out.println("ERROR! Valor não pode ser negativo.");
+			return -1;
 		}
-		while (x > 1) {
-			f = f * (x - 1);
+
+		int f = 1;
+		for (int i = 1; i <= x; i++) {
+			f *= i;
 		}
 		return f;
 	}
@@ -36,7 +38,7 @@ public class Calculadora {
 		double result = 1;
 
 		for (int i = 1; i < expoente; i++) {
-			result = result * base;
+			result = base * base;
 		}
 		return result;
 	}
@@ -56,10 +58,17 @@ public class Calculadora {
 
 		return chute;
 	}
-	
-	int fibonacchi(int x) {
-		
-		return x;
+
+	void fibo(int x) {
+		int n1 = 0, n2 = 1;
+		for (int qtd = x; qtd > 0; qtd--) {
+			System.out.print(n1 + " ");
+			int n3 = n1 + n2;
+			n1 = n2;
+			n2 = n3;
+		}
+		System.out.println("\n\n");
+
 	}
 
 }
