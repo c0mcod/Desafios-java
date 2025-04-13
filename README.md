@@ -62,3 +62,32 @@ double exp(double base, double expoente) {
 		return result;
 	}
 ```
+
+### Raiz Quadrada
+
+A maior dificuldade desse exercicio foi a elaboração desse metodo. Geralmente se usa a classe [math](https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html), mas o nosso orientador pediu para que tentassemos criar este metodo sem o auxilio dessa classe.<br><br>Para o desenvolvimento da lógica desse método, utilizei do [Método Babilónico](https://dialnet.unirioja.es/servlet/articulo?codigo=8704875) para chegar num resultado próximo do valor da raiz, pois este método contém uma margem de erro pequena.
+
+
+```java
+double raizQuadrada(double x) {
+		if (x < 0) {
+			System.out.println("Error! Numero não pode ser menor ou igual a zero!");
+			return -1;
+		}
+
+		double chute = x / 2;
+		double precisao = 0.00001;
+
+		while ((chute * chute - x) > precisao || (x - chute * chute) > precisao) {
+			chute = (chute + x / chute) / 2;
+		}
+
+		return chute;
+	}
+
+```
+a formula é simples:
+```java
+chute = (chute + x / chute) / 2;
+```
+O programa começa com um chute inicial de um numero que é menor que <b>"x"</b>, e repete a fórmula até chegar perto da raiz baseado no valor da variavel precisão.
