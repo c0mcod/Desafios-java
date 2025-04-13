@@ -89,21 +89,21 @@ base = 3, expoente = 4 → 3 * 3 * 3 * 3 = 81
 Este método foi o maior desafio, já que a raiz foi implementada **manualmente**, sem usar a classe `Math`, utilizando o **método babilônico** (também conhecido como método de Herão).
 
 ```java
-double raizQuadrada(double x) {
-	if (x < 0) {
-		System.out.println("Error! Número não pode ser negativo.");
-		return -1;
+	double raizQuadrada(double x) {
+		if (x < 0) {
+			System.out.println("Error! Numero não pode ser menor ou igual a zero!");
+			return -1;
+		}
+
+		double chute = x / 2;
+		double precisao = 0.00001;
+
+		while ((chute * chute - x) > precisao || (x - chute * chute) > precisao) {
+			chute = (chute + x / chute) / 2;
+		}
+
+		return chute;
 	}
-
-	double chute = x / 2;
-	double precisao = 0.00001;
-
-	while (Math.abs(chute * chute - x) > precisao) {
-		chute = (chute + x / chute) / 2;
-	}
-
-	return chute;
-}
 ```
 
  Lógica:
