@@ -1,93 +1,168 @@
-## Calculadora Avançada em Java
+#  Calculadora Avançada em Java
 
-> Desenvolver uma aplicação Java que simule uma calculadora com funcionalidades matemáticas avançadas. Os alunos devem implementar uma classe Calculadora com as funções descritas abaixo e criar um menu de interação com o usuário via console. Na função principal deverá ser criada uma instância dessa classe. Uma pergunta será direcionada ao usuário para que ele indique qual das funções deseja executar. A depender da resposta do usuário, deverão ser lidos os parâmetros relativos a função solicitada e impresso em tela o valor retornado pela função.
+Projeto de uma **calculadora matemática avançada** desenvolvida em Java, com foco em implementar lógicas matemáticas do zero — sem utilizar bibliotecas externas como `Math`. Ideal para fins didáticos e prática de programação orientada a objetos, estruturas de repetição, controle de fluxo e lógica de algoritmos.
 
-## Funcionamento dos métodos básicos
+##  Funcionalidades
 
-O funcionamento dos métodos mais básicas são simples:
+O usuário pode escolher entre as seguintes operações via **menu no console**:
 
-- Solicitação de valores
-  O metodo solicita os valores para realização do calculo solicitado.
-- Execução e retorno do calculo
-  O programa realiza o calculo(multiplicação, divisão, soma e subtração) e depois retorna o produto.
+```
+[1] Soma
+[2] Subtração
+[3] Multiplicação
+[4] Divisão
+[5] Fatorial
+[6] Exponencial
+[7] Raiz quadrada
+[8] Fibonacci
+```
 
-## Funcionamento dos métodos mais avançados
+---
 
-Os métodos mais avançados funcionam da seguinte maneira:
+##  Estrutura do Projeto
 
-### Fatorial
+A calculadora é implementada com uma classe `Calculadora`, que contém os métodos responsáveis por realizar os cálculos. Na `Main`, é instanciada essa classe e um menu interativo coleta os dados do usuário e executa as operações desejadas.
 
-Primeiramente, o metodo verifica se o valor inserido é negativo, se for, uma mensagem de erro é emitida
+---
+
+##  Operações Básicas
+
+As operações de soma, subtração, multiplicação e divisão recebem dois valores do usuário e retornam o resultado diretamente no console.
+
+---
+
+##  Funcionalidades Avançadas
+
+###  Fatorial
+
+Calcula o fatorial de um número inteiro positivo.
 
 ```java
 int fat(int x) {
-		if (x < 0) {
-			System.out.println("ERROR! Valor não pode ser negativo."); // Se o número for menor que 0, exibir erro
-			return -1;
-		}
-
-		int f = 1; // f começa como 1
-		for (int i = 1; i <= x; i++) { //variavel de iteração "i" começa com 1, enquanto i for menor que o numero inserido pelo usuario, i é incrementado a cada iteração do laço FOR
-			f *= i;
-            /*
-            * Exemplo: x = 5;
-            *   f = f * i
-            *   f = 1 * 1  || F agora é o resultado de 1 * 1
-            *   f = 1 * 2  || F agora é o resultado de 1 * 2
-            *   f = 2 * 3  || F agora é o resultado de 2 * 3
-            *   f = 6 * 4  || F agora é o resultado de 6 * 4
-            *   f = 24 * 5 || F agora é o resultado de 24 * 5
-            * a variavel de iteração "i" já é igual a "x" aqui, portanto, o laço acaba aqui.
-            */
-		}
-		return f;
+	if (x < 0) {
+		System.out.println("ERROR! Valor não pode ser negativo.");
+		return -1;
 	}
+
+	int f = 1;
+	for (int i = 1; i <= x; i++) {
+		f *= i;
+	}
+	return f;
+}
 ```
 
-### Exponencial
+ Exemplo (x = 5):
+```
+f = 1 * 1
+f = 1 * 2
+f = 2 * 3
+f = 6 * 4
+f = 24 * 5 → Resultado: 120
+```
+
+---
+
+###  Exponencial
+
+Calcula a potência de uma base elevada a um expoente (base^expoente).
 
 ```java
 double exp(double base, double expoente) {
-		double result = 1; //i começa como 1
-
-		for (int i = 1; i < expoente; i++) { // variavel de iteração começa com 1, enquanto i for menor que o expoente, i irá acrescentar 1
-			result = base * base;
-            /*exemplo: base = 8 e expoente 2
-            *enquanto i for menor que 2, irá acrescentar em i
-            *1 = 8 * 8 = 64
-            *1 = 64
-            */
-             return result;
-		}
-		return result;
+	double result = 1;
+	for (int i = 1; i <= expoente; i++) {
+		result *= base;
 	}
+	return result;
+}
 ```
 
-### Raiz Quadrada
+ Exemplo:
+```
+base = 3, expoente = 4 → 3 * 3 * 3 * 3 = 81
+```
 
-A maior dificuldade desse exercicio foi a elaboração desse metodo. Geralmente se usa a classe [math](https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html), mas o nosso orientador pediu para que tentassemos criar este metodo sem o auxilio dessa classe.<br><br>Para o desenvolvimento da lógica desse método, utilizei do [Método Babilónico](https://dialnet.unirioja.es/servlet/articulo?codigo=8704875) para chegar num resultado próximo do valor da raiz, pois este método contém uma margem de erro pequena.
+---
 
+###  Raiz Quadrada (sem usar Math)
+
+Este método foi o maior desafio, já que a raiz foi implementada **manualmente**, sem usar a classe `Math`, utilizando o **método babilônico** (também conhecido como método de Herão).
 
 ```java
 double raizQuadrada(double x) {
-		if (x < 0) {
-			System.out.println("Error! Numero não pode ser menor ou igual a zero!");
-			return -1;
-		}
-
-		double chute = x / 2;
-		double precisao = 0.00001;
-
-		while ((chute * chute - x) > precisao || (x - chute * chute) > precisao) {
-			chute = (chute + x / chute) / 2;
-		}
-
-		return chute;
+	if (x < 0) {
+		System.out.println("Error! Número não pode ser negativo.");
+		return -1;
 	}
 
+	double chute = x / 2;
+	double precisao = 0.00001;
+
+	while (Math.abs(chute * chute - x) > precisao) {
+		chute = (chute + x / chute) / 2;
+	}
+
+	return chute;
+}
 ```
-a formula é simples:
+
+ Lógica:
+- Começamos com um chute (metade do valor de entrada).
+- Iteramos com a fórmula:
 ```java
 chute = (chute + x / chute) / 2;
 ```
-O programa começa com um chute inicial de um numero que é menor que <b>"x"</b>, e repete a fórmula até chegar perto da raiz baseado no valor da variavel precisão.
+- A repetição para quando a diferença entre `chute²` e `x` for menor que uma margem (`precisao`).
+
+---
+
+###  Sequência de Fibonacci
+
+Gera uma sequência de Fibonacci com a quantidade de termos escolhida pelo usuário.
+
+```java
+void fibo(int x) {
+	int n1 = 0, n2 = 1;
+	for (int qtd = x; qtd > 0; qtd--) {
+		System.out.print(n1 + " ");
+		int n3 = n1 + n2;
+		n1 = n2;
+		n2 = n3;
+	}
+}
+```
+
+ Exemplo (x = 6):
+```
+0 1 1 2 3 5
+```
+
+---
+
+##  Tecnologias Utilizadas
+
+- Java (JDK 8+)
+- Eclipse IDE (ou VS Code)
+- Lógica de programação
+- Estruturas de repetição e controle
+- Programação orientada a objetos
+
+---
+
+##  Como Executar
+
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/seu-usuario/calculadora-avancada-java.git
+   ```
+2. Abra o projeto no Eclipse ou outro ambiente Java.
+3. Compile e execute a classe `Main`.
+4. Siga o menu no terminal para usar as funcionalidades.
+
+---
+
+##  Referências
+
+- [Método Babilônico - Raiz Quadrada](https://dialnet.unirioja.es/servlet/articulo?codigo=8704875)
+- Documentação oficial do Java: [Oracle Docs](https://docs.oracle.com/javase/8/docs/api/)
+
