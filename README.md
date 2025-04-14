@@ -113,6 +113,13 @@ Este método foi o maior desafio, já que a raiz foi implementada **manualmente*
 chute = (chute + x / chute) / 2;
 ```
 - A repetição para quando a diferença entre `chute²` e `x` for menor que uma margem (`precisao`).
+```txt
+Chute inicial: 8.0
+1ª iteração: (8 + 16/8) / 2 = 5.0
+2ª iteração: (5 + 16/5) / 2 = 4.1
+3ª iteração: (4.1 + 16/4.1) / 2 ≈ 4.0006
+4ª iteração: (4.0006 + 16/4.0006) / 2 ≈ 4.0000 ✅
+```
 
 ---
 
