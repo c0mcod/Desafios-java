@@ -149,7 +149,7 @@ void fibo(int x) {
 ##  Tecnologias Utilizadas
 
 - Java (JDK 8+)
-- Eclipse IDE (ou VS Code)
+- Eclipse IDE (e VS Code)
 - Lógica de programação
 - Estruturas de repetição e controle
 - Programação orientada a objetos
